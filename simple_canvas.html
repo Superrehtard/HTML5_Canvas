@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML 5 Canvas</title>
+</head>
+<body>
+	<canvas id="c" width="200" height="200"></canvas>
+
+	<script type="text/javascript">
+		var c = document.querySelector("#c");
+		var ctx = c.getContext("2d");
+
+		var image = new Image();
+
+		image.onload = function() {
+			console.log("Image Loaded");
+			ctx.drawImage(image, 0, 0, c.width, c.height);
+
+			// to save the images inside the canvas
+			var savedImage = c.toDataURL();
+			// toDataURL --> creates a text string that represent the photo.
+			window.open(savedImage);
+			// doSomethingElse();
+		}
+
+		image.src = "Cowboy Bebop_Ed.jpg";
+	</script>
+</body>
+</html>
