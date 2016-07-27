@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Manipulate Image data</title>
+</head>
+<body>
+
+	<canvas id="canvas" width="500" height="500"></canvas>
+
+	<script type="text/javascript">
+		
+		
+		var c = document.querySelector("#canvas");
+		var ctx = c.getContext("2d");
+
+		var imageData = ctx.getImageData(0, 0, c.width, c.height);
+
+		function paintGreen(imageData) {
+			// Total number of pixels in the imageData(as data array contains r,g,b and a elements for every pixel divide by 4).
+			var numOfPixels = imageData.data.length / 4;
+
+			for(var i = 0; i < numOfPixels; i+=10){
+				// make the green channel of every 10th pixel green.
+				imageData.data[i * 4 + 1] == 255;
+				// Change the alpha to make the pixel solid green.
+				imageData.data[i * 4 + 3] == 255;
+			}
+			ctx.putImageData( imageData, 0, 0);
+		}
+		paintGreen(imageData);
+
+	</script>
+
+</body>
+</html>
